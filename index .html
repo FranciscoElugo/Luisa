@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Una Nota para Francisco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 30px 20px;
+      box-sizing: border-box;
+      color: #333;
+    }
+
+    h1 {
+      color: #b30059;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1em;
+      text-align: center;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 700px;
+      height: 250px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      resize: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: #fff;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1em;
+      background: #b30059;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .guardado {
+      margin-top: 15px;
+      color: green;
+      font-weight: 600;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Una Nota para Francisco</h1>
+  <p>Luisa, escribe aquí todo lo que sientes por Francisco. Puedes contarle lo que piensas, lo que deseas construir a su lado, lo que te gustaría que él cambiara, o lo que tú estás dispuesta a mejorar. Esta nota es solo tuya y de él.</p>
+  <textarea id="nota" placeholder="Empieza a escribir desde tu corazón..."></textarea>
+  <button onclick="guardarNota()">Guardar Nota</button>
+  <div class="guardado" id="mensaje">💌 Tu nota ha sido guardada en este dispositivo.</div>
+
+  <script>
+    const textarea = document.getElementById('nota');
+    const mensaje = document.getElementById('mensaje');
+
+    if (localStorage.getItem("notaLuisa")) {
+      textarea.value = localStorage.getItem("notaLuisa");
+    }
+
+    function guardarNota() {
+      localStorage.setItem("notaLuisa", textarea.value);
+      mensaje.style.display = "block";
+      setTimeout(() => mensaje.style.display = "none", 3000);
+    }
+  </script>
+</body>
+</html>
